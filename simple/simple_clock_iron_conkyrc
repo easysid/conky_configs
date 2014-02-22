@@ -1,0 +1,92 @@
+#
+# Simple clock conky
+#
+# Wed, 25 Sep 2013 12:06:31 IST
+######################
+# - Conky settings - #
+######################
+
+background no
+update_interval 1
+cpu_avg_samples 1
+total_run_times 0
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 10240
+imlib_cache_size 10240
+
+# For screen size 1366x768
+minimum_size 400 100
+maximum_width 400
+
+gap_x 20
+gap_y 20
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont dejavu sans mono:bold:size=8
+xftalpha 1
+
+short_units yes
+uppercase no
+
+# Text alignment
+alignment tr
+
+######################
+# - Color settings - #
+######################
+
+color1 0E0E1E #c68e17 #labels and date
+default_color 505050 #Text
+
+default_shade_color gray
+default_outline_color black
+#############################
+# - Window specifications - #
+#############################
+own_window yes
+own_window_colour blue
+own_window_argb_visual yes
+#own_window_argb_value 30
+own_window_class Conky
+own_window_transparent yes
+#own_window_type override
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+border_inner_margin 0
+border_outer_margin 0
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+draw_graph_borders no
+
+# Previous fonts
+# Raleway 120-100-40. The position was 30
+#
+
+TEXT
+${font Iron:pixelsize=120}\
+${alignc}${time %H} ${time %M}\
+${font}
+${font Iron:pixelsize=45}\
+${alignc}${time %a}, ${color1}${time %d} ${color}${time %b}\
+${font}
+
+${goto 65}${color1}CPU: ${color}${cpu cpu0}%\
+${goto 130}${color1}RAM: ${color}${mem} [${memperc}%]\
+${goto 240}${color1}/: ${color}${fs_used /} [${fs_used_perc /}%]
+${goto 65}${color1}CPU: ${color}${platform coretemp.0 temp 2}°\
+${goto 130}${color1}ATI: ${color}${hwmon 2 temp 1}°\
+${goto 233}${color1}~/: ${color}${fs_used /home} [${fs_used_perc /home}%]
+

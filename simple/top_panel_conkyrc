@@ -1,0 +1,89 @@
+# Panel conky
+## Written from scratch by Siddharth Sharma
+# 5-December-2012
+# Edited 29-Dec-2012 to suit the new wallpaper.
+# Edit Sun, 07 Jul 2013 161816 IST new layout
+
+######################
+# - Conky settings - #
+######################
+
+background no
+update_interval 2
+cpu_avg_samples 1
+total_run_times 0
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 10240
+imlib_cache_size 10240
+
+# For screen size 1366x768
+minimum_size 1366 20
+maximum_width 1366
+
+gap_x 0
+gap_y 2
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont monofur:bold:size=10
+xftalpha .8
+
+short_units yes
+uppercase no
+
+# Text alignment
+alignment top_left
+
+######################
+# - Color settings - #
+######################
+
+color1 aaaaaa # labels
+color2 FFFFFF # Separator
+default_color dddddd # Text
+
+#############################
+# - Window specifications - #
+#############################
+own_window yes
+own_window_colour 101010
+own_window_argb_visual yes
+own_window_argb_value 150
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+border_inner_margin 0
+border_outer_margin 0
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+draw_graph_borders no
+
+TEXT
+${color1} Kernel:${color} ${kernel}\
+${color1}  Uptime: ${color}${uptime_short}\
+${goto 287}${color1}CPU: ${color}${cpu cpu0}%\
+${goto 352}${color1}RAM: ${color}${mem} [${memperc}%]\
+${goto 478}${color1}CPU: ${color}${platform coretemp.0 temp 2}°\
+${color1}  ATI: ${color}${hwmon 2 temp 1}°\
+${color1}  HDD: ${color}${execi 15 hddtemp /dev/sda -n }°\
+${color1}   /: ${color}${fs_used /} [${fs_used_perc /}%]\
+${color1}  ~/: ${color}${fs_used /home} [${fs_used_perc /home}%]\
+${color1}  DATA/: ${color}${fs_used /media/DATA} [${fs_used_perc /media/DATA}%]\
+${color1}   NET: ${color}${if_up wlan0}${if_existing /proc/net/route wlan0}${wireless_essid wlan0}${else}\
+${color aaaaaa}None${endif}${else}\
+${color aaaaaa}Off${endif}${color}\
+${goto 1155}${color1}BAT: ${color}${battery BAT0}\
+${font monofur:bold:size=14}${color2}\
+${voffset -4}${goto 275}|${goto 466}|${goto 677}|${goto 1048}|\

@@ -1,0 +1,123 @@
+#
+## arpinux style tree conky
+## easysid Saturday, 30 November 2013 16:09
+#
+######################
+# - Conky settings - #
+######################
+
+background no
+update_interval 2
+cpu_avg_samples 1
+total_run_times 0
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 10240
+imlib_cache_size 10240
+
+# For screen size 1366x768
+minimum_size 380 500
+maximum_width 380
+
+gap_x 20
+gap_y 20
+alignment tl
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont dejavu sans mono:pixelsize=11
+xftalpha 1
+
+short_units yes
+pad_percents 2
+top_name_width 9
+uppercase no
+
+
+######################
+# - Color settings - #
+######################
+
+color1 a0a0a0 #separators
+color2 00CABA #labels
+color3 cdcdcd #top process
+color4 c0c0c0 #next 2 processes
+color5 aaaaaa #next 2 processes
+default_color cccccc # Text
+
+#############################
+# - Window specifications - #
+#############################
+own_window yes
+own_window_colour 1d1d1d
+own_window_argb_visual yes
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+border_inner_margin 0
+border_outer_margin 0
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+draw_graph_borders yes
+
+#call the Lua script here
+#lua_load ~/Conky/drawbg.lua
+#lua_draw_hook_pre draw_bg 0 0 0 0 0 0x10101c 0.7
+
+TEXT
+${color1}⎜${offset -4}${voffset 6}──${voffset -6}${color}${sysname} @ ${nodename}
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}${kernel}
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}${execi 1000 pacman -Q | wc -l} packages
+${color1}⎜  ⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}Updated on ${execi 1000 awk '/upgraded/ {line=$0;} END { $0=line; gsub(/[\[\]]/,"",$0); printf "%s %s",$1,$2;}' /var/log/pacman.log}
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}uptime ${uptime_short}
+${color1}⎜
+${color1}⎜${offset -4}${voffset 6}──${voffset -6}${color}cpu
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}${cpu cpu0}% ${color1}${voffset 6}──${voffset -6}${color}${freq cpu cpu0} MHz
+${color1}⎜  ⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}cpu1 ${cpu cpu1}% ${color1}${voffset 6}──${voffset -6}${color}cpu2 ${cpu cpu2}%
+${color1}⎜  ⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}cpu3 ${cpu cpu3}% ${color1}${voffset 6}──${voffset -6}${color}cpu4 ${cpu cpu4}%
+${color1}⎜  ⎜
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}process${goto 150}pid${goto 200}cpu${goto 255}mem
+${color1}⎜     ⎜_${color3}${top name 1}${goto 140}${top pid 1}${goto 180}${top cpu 1}%${goto 250}${top mem_res 1}
+${color1}⎜     ⎜_${color4}${top name 2}${goto 140}${top pid 2}${goto 180}${top cpu 2}%${goto 250}${top mem_res 2}
+${color1}⎜     ⎜_${color4}${top name 3}${goto 140}${top pid 3}${goto 180}${top cpu 3}%${goto 250}${top mem_res 3}
+${color1}⎜     ⎜_${color5}${top name 4}${goto 140}${top pid 4}${goto 180}${top cpu 4}%${goto 250}${top mem_res 4}
+${color1}⎜     ⎜_${color5}${top name 5}${goto 140}${top pid 5}${goto 180}${top cpu 5}%${goto 250}${top mem_res 5}
+${color1}⎜
+${color1}⎜${offset -4}${voffset 6}──${voffset -6}${color}ram
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}${memperc}% ${color1}${voffset 6}──${voffset -6}${color}${mem} of ${memmax}
+${color1}⎜  ⎜
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}process${goto 150}pid${goto 200}cpu${goto 255}mem
+${color1}⎜     ⎜_${color3}${top_mem name 1}${goto 140}${top_mem pid 1}${goto 180}${top_mem cpu 1}%${goto 250}${top_mem mem_res 1}
+${color1}⎜     ⎜_${color4}${top_mem name 2}${goto 140}${top_mem pid 2}${goto 180}${top_mem cpu 2}%${goto 250}${top_mem mem_res 2}
+${color1}⎜     ⎜_${color4}${top_mem name 3}${goto 140}${top_mem pid 3}${goto 180}${top_mem cpu 3}%${goto 250}${top_mem mem_res 3}
+${color1}⎜     ⎜_${color5}${top_mem name 4}${goto 140}${top_mem pid 4}${goto 180}${top_mem cpu 4}%${goto 250}${top_mem mem_res 4}
+${color1}⎜     ⎜_${color5}${top_mem name 5}${goto 140}${top_mem pid 5}${goto 180}${top_mem cpu 5}%${goto 250}${top_mem mem_res 5}
+${color1}⎜
+${color1}⎜${offset -4}${voffset 6}──${voffset -6}${color}temp
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}cpu ${color}${platform coretemp.0 temp 2}°
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}ati ${color}${execi 3 sensors radeon-pci-0100 | grep temp1 | cut -c16-17}°
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}hdd ${color}${execi 10 hddtemp /dev/sda -n }°
+${color1}⎜
+${color1}⎜${offset -4}${voffset 6}──${voffset -6}${color}disks
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}/     ${fs_used_perc /}% ${color1}_${color}${fs_used /} of ${fs_size /} ${color1}_${color}${fs_free /} free
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}/home ${fs_used_perc /home}% ${color1}_${color}${fs_used /home} of ${fs_size /home} ${color1}_${color}${fs_free /home} free
+${color1}⎜  ⎜${offset -4}${voffset 6}──${voffset -6}${color}/DATA ${fs_used_perc /media/DATA}% ${color1}_${color}${fs_used /media/DATA}  of ${fs_size /media/DATA}  ${color1}_${color}${fs_free /media/DATA} free
+${color1}⎜
+${color1}⎜${offset -4}${voffset 6}──${voffset -6}${color}network
+${color1}   ⎜${offset -4}${voffset 6}──${voffset -6}${color}${if_existing /proc/net/route wlan0}connected to _${wireless_essid wlan0}
+${color1}   ⎜
+${color1}   ⎜${offset -4}${voffset 6}──${voffset -6}${color}usage${goto 115}down${goto 185}up${goto 245}total
+${color1}      ⎜_${color3}today${execpi 300 vnstat --short | awk '/today/{ gsub("iB",""); printf "${goto 110}%s%s ${goto 180}%s%s ${goto 240}%s%s",$2,$3,$5,$6,$8,$9}'}
+${color1}      ⎜_${color4}month${execpi 1000 vnstat --short | grep $(date +%b) | awk '{ gsub("iB",""); printf "${goto 110}%s%s ${goto 180}%s%s ${goto 240}%s%s",$3,$4,$6,$7,$9,$10}'}
+${else}${color1}<not connected>${endif}

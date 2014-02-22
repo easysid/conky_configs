@@ -1,0 +1,76 @@
+# simple topbar conky
+# Thursday, 02 January 2014 12:51
+
+######################
+# - Conky settings - #
+######################
+
+background no
+update_interval 2
+cpu_avg_samples 1
+total_run_times 0
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 10240
+imlib_cache_size 10240
+
+# For screen size 1366x768
+minimum_size 1100 80
+maximum_width 1100
+
+gap_x 180
+gap_y 5
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont dejavu sans mono:pixelsize=14
+xftalpha .8
+
+short_units yes
+uppercase no
+
+# Text alignment
+alignment tl
+
+######################
+# - Color settings - #
+######################
+
+default_color dddddd # Text
+
+#############################
+# - Window specifications - #
+#############################
+own_window yes
+own_window_colour 101010
+own_window_argb_visual yes
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+border_inner_margin 0
+border_outer_margin 0
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+draw_graph_borders no
+
+TEXT
+
+${font openlogos:pixelsize=40}B${font}${voffset -10} ${kernel}\
+${voffset -15}${font poky:pixelsize=35} s${font}${voffset -12} ${uptime_short} ${goto 320}\
+${voffset -15}${font poky:pixelsize=35}P${font}${voffset -10} ${cpubar cpu0 13,160} \
+${voffset -14}${font poky:pixelsize=35} M${font}${voffset -12} ${membar 13,160} \
+${voffset -8}${font radiospace:pixelsize=25}    CPU${font} ${voffset -3} ${platform coretemp.0 temp 2}°\
+${voffset -7}${font radiospace:pixelsize=25}   ATI${font} ${voffset -3} ${execi 3 sensors radeon-pci-0100 | grep temp1 | cut -c16-17}°
+${voffset -16}${font dejavu sans mono:bold:pixelsize=11}\
+${goto 430}${cpu cpu 0}% ${goto 675}${mem}

@@ -1,0 +1,99 @@
+# Conky for red wine wallpaper
+## modified from gotham conky
+# 28-Feb-2013
+#
+######################
+# - Conky settings - #
+######################
+
+background no
+update_interval 3
+cpu_avg_samples 1
+total_run_times 0
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 10240
+imlib_cache_size 10240
+
+# For screen size 1366x768
+minimum_size 600 10
+maximum_width 600
+
+gap_x 110
+gap_y -60
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont calibri:bold:pixelsize=15
+xftalpha .8
+
+short_units yes
+uppercase no
+
+alignment middle_left
+
+######################
+# - Color settings - #
+######################
+
+color1 87CEFA # backup
+color2 A1000A # params
+color3 6D7B8D # no network
+
+default_color dddddd
+default_shade_color gray
+default_outline_color black
+#############################
+# - Window specifications - #
+#############################
+own_window yes
+own_window_colour blue
+own_window_argb_visual yes
+own_window_class Conky
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+border_inner_margin 0
+border_outer_margin 0
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+draw_graph_borders no
+
+TEXT
+${voffset 50}
+${font calibri:pixelsize=120}${time %H:%M}${font}
+${voffset -80} ${goto 290}\
+${font calibri:pixelsize=40}${color2}${time %d}${color}${font}
+${voffset -35} ${goto 335}\
+${font calibri:pixelsize=25}${time %B %Y}${font}
+${voffset 8} ${goto 290}\
+${font calibri:pixelsize=60}${time %A}${font}${voffset 5}
+${goto 10}${color2}CPU1${color}  ${cpu cpu1}% \
+${goto 100}${color2}CPU2${color}  ${cpu cpu3}%\
+${goto 180}${color2}RAM${color}   ${mem}/${memmax}\
+${goto 330}${color2}[Root]${color}     ${fs_used /}/${fs_size /}
+${goto 10}${color2}CPU1${color}  ${platform coretemp.0 temp 2}°C \
+${goto 100}${color2}CPU2${color}  ${platform coretemp.0 temp 4}°C \
+${goto 180}${color2}ATI${color}   ${hwmon 2 temp 1}°C\
+${goto 250}${color2}HDD   ${color}${execi 30 hddtemp /dev/sda -n }°C\
+${goto 330}${color2}[/home]${color}  ${fs_used /home}/${fs_size /home}
+${goto 10}${color2}Net ${color} ${if_up wlan0}${if_existing /proc/net/route wlan0}${wireless_essid wlan0}${else}\
+${color3}None${color}${endif}${else}\
+${color3}Off${color}${endif}\
+${goto 100}${color2}BAT${color} ${battery_short BAT0}\
+${goto 180}${color2}VOL${color}  ${execi 30 amixer -M get Master | grep '%' | cut -c 22-24}\
+${goto 330}${color2}[/DATA]${color}  ${fs_used /media/DATA}/${fs_size /media/DATA}\
+${goto 250}${color2}BRT${color}  ${head /sys/class/backlight/acpi_video0/actual_brightness 20}\
+${goto 10}${top_mem name 1}  ${top_mem name 2}  ${top_mem name 3}\
+  ${top_mem name 4}  ${top_mem name 5}

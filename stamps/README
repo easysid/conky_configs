@@ -1,0 +1,24 @@
+stamps conky. v 1.0
+Written by easysid
+Wed 26 Jun 2013 20:53:46 IST
+
+This is the revision to my earlier conky. Now it is a lua only conky, with both the images and text being drawn by the lua script.
+
+The script uses 3 stamp images.
+stamp1: when height > width
+stamp2: when width > height
+stamp3: when width = height
+The reason I used 3 different images was because while scaling a single image, the stamp outline was distorted too much for my liking.
+You can specify the image file to be used by file=<image> in the settings table.
+The script will use a default image if you fail to provide the image name. (get_stampimage())
+
+The stamp images are filled with 75% white so it gives a slight transparency.
+
+Images used:
+http://openclipart.org/detail/27668/stamp-frame-by-kuhlo-27668
+http://openclipart.org/detail/27666/stamp-frame-by-kuhlo-27666
+
+Suggestions are welcome. You can post them on the Crunchbang Monster conky thread or pm me.
+
+Thanks.
+--easysid
