@@ -109,14 +109,14 @@ function draw_clock(cr, t)
     if t.use12hourformat then
         hour = tonumber(os.date("%l"))
         local ampm = os.date("%p")
-        out({x=t.xc,y=t.yc+hy,f=dfont,face=dface,fs=t.day_font_size,txt=ampm,hj='c',vj='n'})
+        out({x=t.xc,y=t.yc+hy,f=dfont,face=dface,fs=t.day_font_size,c=t.text_color,txt=ampm,hj='c',vj='n'})
     end
     if t.showday then
         local day = os.date("%a")
-        out({x=t.xc,y=t.yc-hy,f=dfont,face=dface,fs=t.day_font_size,txt=day,hj='c',vj='t'})
+        out({x=t.xc,y=t.yc-hy,f=dfont,face=dface,fs=t.day_font_size,c=t.text_color,txt=day,hj='c',vj='t'})
     end
-    out({x=t.xc,y=t.yc,f=t.hour_font,fs=t.hour_font_size,txt=hour,hj='c',vj='m'})
-    out({x=xm,y=ym,f=mfont,face=mface,fs=t.min_font_size,txt=minutes,hj='c',vj='m'})
+    out({x=t.xc,y=t.yc,f=t.hour_font,fs=t.hour_font_size,c=t.text_color,txt=hour,hj='c',vj='m'})
+    out({x=xm,y=ym,f=mfont,face=mface,fs=t.min_font_size,c=t.text_color,txt=minutes,hj='c',vj='m'})
 end -- end draw_clock
 
 function out(txj)--c,a,f,fs,face,x,y,txt,hj,vj,ro,sxo,syo,sfs,sface,sc,sa #
