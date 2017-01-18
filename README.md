@@ -4,6 +4,8 @@ Conky configs written by me. Some are original, and some borrowed.
 
 
 ##Lua based conkys
+*   **Do I Need A Jacket** (based on the [rainmeter skin of same name](http://flyinghyrax.deviantart.com/art/Do-I-Need-a-Jacket-2-0-beta-2016-04-10-494721790))
+    ![doIneedAJacket](https://github.com/easysid/conky_configs/raw/master/doIneedAJacket/image.png)
 
 *   **Minimal Clock**
 
