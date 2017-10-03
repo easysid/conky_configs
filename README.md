@@ -4,6 +4,10 @@ Conky configs written by me. Some are original, and some borrowed.
 
 
 ##Lua based conkys
+*   **Colorfill Conky** (based on the [LIM!T rainmeter skin](https://injust29.deviantart.com/art/LIM-T-1-2-344112531))
+
+    ![colorfill conky](https://github.com/easysid/conky_configs/raw/master/colorfill/image.png)
+
 *   **Do I Need A Jacket** (based on the [rainmeter skin of same name](http://flyinghyrax.deviantart.com/art/Do-I-Need-a-Jacket-2-0-beta-2016-04-10-494721790))
 
     ![doIneedAJacket](https://github.com/easysid/conky_configs/raw/master/doINeedAJacket/image.png)
