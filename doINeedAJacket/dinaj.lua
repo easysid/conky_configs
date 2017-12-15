@@ -18,7 +18,7 @@ Tuesday, 10 January 2017 16:28 IST
 require 'cairo'
 
 -- replace with your accuweather url. Be sure to use the current-weather url
-local url = "http://www.accuweather.com/en/in/delhi/202396/current-weather/202396"
+local url = "https://www.accuweather.com/en/in/delhi/202396/current-weather/202396"
 
 -- update frequency (in conky cycles)
 local update_time = 600
@@ -113,7 +113,8 @@ function fetchData()
     url = string.gsub(url, "weather%-forecast", "current-weather")
     local regex = '"small.temp"><em>RealFeel.*</em>%s(-?%d+).-</span>'
     local temp = nil
-    local f = io.popen(string.format("curl --max-time 60 '%s'", url))
+    local agent = 'User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    local f = io.popen(string.format("curl --max-time 60 -H '%s' '%s'", agent, url))
     local data = f:read("*a")
     f:close()
     temp = string.match(data, regex)
