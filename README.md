@@ -3,7 +3,12 @@ conky_configs
 Conky configs written by me. Some are original, and some borrowed.
 
 
-##Lua based conkys
+## Lua based conkys
+*   **Fade Clock Conky** (based on the [Fade rainmeter skin](https://freakquency85.deviantart.com/art/Fade-168573335)
+
+    ![fade clock conky](https://github.com/easysid/conky_configs/raw/master/fade_clock/image.png)
+    [Full Screenshot](https://orig00.deviantart.net/ee76/f/2017/352/a/6/fade_clock_conky_by_easysid-dbx35l3.png)
+
 *   **Colorfill Conky** (based on the [LIM!T rainmeter skin](https://injust29.deviantart.com/art/LIM-T-1-2-344112531))
 
     ![colorfill conky](https://github.com/easysid/conky_configs/raw/master/colorfill/image.png)
@@ -35,7 +40,7 @@ Conky configs written by me. Some are original, and some borrowed.
    [Full screenshot](http://i.imgur.com/BgJjs3v.jpg)
 
 
-##Simple conkys
+## Simple conkys
 
 *   **gotham conky**    (based on gotham conky)
 
