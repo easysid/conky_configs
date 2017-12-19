@@ -11,6 +11,9 @@ Credits:
 * rainmeter skin http://fav.me/d2sd40n
 --]]
 
+-- TODO make time count to 00, but not days
+
+
 require 'cairo'
 
 --
