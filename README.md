@@ -32,13 +32,13 @@ Conky configs written by me. Some are original, and some borrowed.
 
    ![flowers](https://github.com/easysid/conky_configs/raw/master/flowers/flowers_conky.png)
 
-   [Full screenshot](http://www.flickr.com/photos/easysid/8911104368/)
+   [Full screenshot](https://easysid.deviantart.com/art/2013-June-Clean-478443880)
 
 *   **Stamps**
 
    ![stamps](https://github.com/easysid/conky_configs/raw/master/stamps/stamp_conky.png)
 
-   [Full screenshot](http://i.imgur.com/BgJjs3v.jpg)
+   [Full screenshot](https://easysid.deviantart.com/art/2013-June-2-Clean-478443853)
 
 
 ## Simple conkys
@@ -47,29 +47,29 @@ Conky configs written by me. Some are original, and some borrowed.
 
    ![gotham](https://github.com/easysid/conky_configs/raw/master/simple/gotham.png)
 
-   [Full screenshot](http://www.flickr.com/photos/easysid/8743489697/)
+   [Full screenshot](https://easysid.deviantart.com/art/2013-March-Clean-478443101)
 
 *   **simple_clock**
 
    ![clock_iron](https://github.com/easysid/conky_configs/raw/master/simple/clock_iron.png)
 
-    [Full screenshot](http://www.flickr.com/photos/easysid/10040163753/)
+    [Full screenshot](https://easysid.deviantart.com/art/2013-October-478846329)
 
 *   **top_panel**
 
   ![top panel](https://github.com/easysid/conky_configs/raw/master/simple/top_panel.png)
 
-   [Full screenshot](http://www.flickr.com/photos/easysid/9814315474/)
+   [Full screenshot](https://easysid.deviantart.com/art/2013-August-478846024)
 
 * **top_bars**
 
    ![top bars](https://github.com/easysid/conky_configs/raw/master/simple/topbars.png)
 
-   [Full screenshot](http://www.flickr.com/photos/easysid/11705090703/)
+   [Full screenshot](https://easysid.deviantart.com/art/2014-January-479069634)
 
 *   **tree_conky**  (arpinux style conky)
 
   ![tree](https://github.com/easysid/conky_configs/raw/master/simple/tree_arpinux.png)
 
-   [Full screenshot](http://i.imgur.com/BgJjs3v.jpg)
+   [Full screenshot](https://easysid.deviantart.com/art/2013-December-478846141)
 
