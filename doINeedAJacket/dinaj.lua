@@ -3,17 +3,24 @@ dinaj.lua
 lua script for Do I need a Jacket Conky
 easysid
 Thursday, 05 January 2017 13:22 IST
+Updated:
+Sunday, 07 January 2018 15:57 IST
+    * Use better regex to find conditions
+    * Add support for displaying consitions with ConkyWeather font
+Tuesday, 10 January 2017 16:28 IST
 
 Based on the dinaj Rainmeter skin by FlyingHyrax
-
 Credits:
 * FlyingHyrax (http://flyinghyrax.deviantart.com)
 * https://doineedajacket.com/
 * mrpeachy, for the out() function
-
-Updated:
-Tuesday, 10 January 2017 16:28 IST
+* TeoBigusGeekus for the accuweather icon to conky font table
 --]]
+
+-- TODO
+-- * Add translations through modules
+-- * Clean up code
+
 
 require 'cairo'
 
@@ -36,6 +43,7 @@ local t = {
     -- text settings
     font  = "sans",    -- font face for the text
     color = {0xf0f0f0, 1},   -- {hex, alpha}
+    show_temp = 1,          -- show the temperature info. requires conkyweather font
     -- line 1 - Do you need a jacket
     l1 = {
         font_size = 35,      -- font size
@@ -47,6 +55,18 @@ local t = {
         font_size = 23,      -- font size
         x = 20,              -- x position of text
         y = 70
+    },
+    -- line 3 - Weather icon
+    l3 = {
+        font_size = 100,      -- font size
+        x = 250,              -- x position of text
+        y = 200
+    },
+    -- line 4 - Temperature
+    l4 = {
+        font_size = 23,      -- font size
+        x = 330,              -- x position of text
+        y = 170
     },
 } -- end settings table
 
@@ -78,6 +98,48 @@ local Constants = {
         "scorching",
         "oven-like",
         "like your hair is on FIRE",
+    },
+    ICONS = { -- ConkyWeather font lookup for accuweather icons
+        i1  = 'a',
+        i2  = 'b',
+        i3  = 'b',
+        i4  = 'c',
+        i5  = 'c',
+        i6  = 'd',
+        i7  = 'e',
+        i8  = 'f',
+        i11 = '0',
+        i12 = 'h',
+        i13 = 'g',
+        i14 = 'g',
+        i15 = 'm',
+        i16 = 'k',
+        i17 = 'k',
+        i18 = 'i',
+        i19 = 'q',
+        i20 = 'o',
+        i21 = 'o',
+        i22 = 'r',
+        i23 = 'o',
+        i24 = 'E',
+        i25 = 'v',
+        i26 = 'x',
+        i29 = 'y',
+        i30 = '5',
+        i31 = 'E',
+        i32 = '6',
+        i33 = 'A',
+        i34 = 'B',
+        i35 = 'B',
+        i36 = 'C',
+        i37 = 'C',
+        i38 = 'D',
+        i39 = 'G',
+        i40 = 'G',
+        i41 = 'K',
+        i42 = 'K',
+        i43 = 'O',
+        i44 = 'O',
     }
 }
 
@@ -96,12 +158,15 @@ function conky_main()
     -- time the fetch data
     if timer == 0 or first_run == 1 then
         first_run = nil
-        temperature = fetchData()
+        conditions = fetchData()
         if testing then
-             print("\nTesting Mode. Current temperature", temperature)
+             print("\nTesting Mode...")
+             print("temperature", conditions.temp)
+             print("icon", conditions.icon)
+             print("conditions", conditions.cond)
         end
     end
-    doINeedAJacket(temperature)
+    doINeedAJacket(conditions)
     cairo_destroy(cr)
     cairo_surface_destroy(cs)
     cr=nil
@@ -111,22 +176,29 @@ end
 function fetchData()
     -- use the current weather url
     url = string.gsub(url, "weather%-forecast", "current-weather")
-    local regex = '"small.temp"><em>RealFeel.*</em>%s(-?%d+).-</span>'
-    local temp = nil
     local agent = 'User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
     local f = io.popen(string.format("curl --max-time 60 -H '%s' '%s'", agent, url))
     local data = f:read("*a")
     f:close()
-    temp = string.match(data, regex)
-    return tonumber(temp)
+    local current = string.match(data, 'cu: {.-}')
+    local temp = tonumber(string.match(current, "rf : '(.-)'"))
+    local icon = "i"..string.match(current, "wx : '(.-)'")
+    local cond = string.match(current, "txt : '(.-)'")
+    return {temp=temp, icon=icon, cond=cond}
 end
 
-function doINeedAJacket(temp)
+function doINeedAJacket(conditions)
+    local temp = conditions.temp
     if temp then
         local s1 = getMainString(temp)
         local s2 = getSubString(temp, t.unit)
         out({x=t.l1.x, y=t.l1.y, fs=t.l1.font_size, f=t.font, c=t.color, txt=s1})
         out({x=t.l2.x, y=t.l2.y, fs=t.l2.font_size, f=t.font, c=t.color, txt=s2})
+        if t.show_temp then
+            local icon = Constants.ICONS[conditions.icon]
+            out({x=t.l3.x, y=t.l3.y, fs=t.l3.font_size, f='ConkyWeather', c=t.color, txt=icon})
+            out({x=t.l4.x, y=t.l4.y, fs=t.l4.font_size, f=t.font, c=t.color, txt=temp..'°'})
+        end
     else
         out({x=10,y=10,txt="Failed to get current weather information"})
     end
