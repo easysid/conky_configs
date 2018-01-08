@@ -100,8 +100,8 @@ settings_t2 = { -- This table draws the horizontal text - day, and month
     trail = 27,
     left_pad = 60,                  -- left side padding to make space for date
     -- translate the following table for your own language
-    names = {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY",
-                "THURSDAY", "FRIDAY", "SATURDAY"}
+    names = {"MONDAY", "TUESDAY", "WEDNESDAY",
+                "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"}
     }
 } -- end settings_t2
 
