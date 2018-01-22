@@ -4,6 +4,12 @@ Conky configs written by me. Some are original, and some borrowed.
 
 
 ## Lua based conkys
+*   **Duo Conky** (based on the [UI Plano rainmeter skin](http://fav.me/db7o7rr))
+
+    ![duo conky](https://github.com/easysid/conky_configs/raw/master/duo/image.png)
+
+    [Full Screenshot](https://pre00.deviantart.net/f601/th/pre/f/2018/022/4/4/duo_conky_by_easysid-dc0tto8.png)
+
 *   **Fade Clock Conky** (based on the [Fade rainmeter skin](https://freakquency85.deviantart.com/art/Fade-168573335))
 
     ![fade clock conky](https://github.com/easysid/conky_configs/raw/master/fade_clock/image.png)
